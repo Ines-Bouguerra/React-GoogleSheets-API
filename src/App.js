@@ -1,37 +1,26 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 
 function App() {
-
-  // form states
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
 
-
-  // submit event
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(name, age);
-
-    // our object to pass
-    // const data = {
-    //   name,
-    //   age,
-    //   designation,
-    //   salary,
-    // };
-    // axios
-    //   .post(
-    //     "https://sheet.best/api/sheets/e7a8bead-e947-4de5-9421-8e17433a3fff",
-    //     data
-    //   )
-    //   .then((response) => {
-    //     // console.log(response);
-    //     setName("");
-    //     setAge("");
-    //     setDesignation("");
-    //     setSalary("");
-    //   });
+    const data = {
+      name,
+      age,
+    };
+    axios
+      .post(
+        "https://sheet.best/api/sheets/09e7ee0f-1511-4e65-9dae-0e1b7210d9a1",
+        data
+      )
+      .then((response) => {
+        console.log(response);
+        setName("");
+        setAge("");
+      });
   };
   return (
     <div className="container">
@@ -58,7 +47,7 @@ function App() {
           onChange={(e) => setAge(e.target.value)}
           value={age}
         />
-       
+
         <br></br>
         <div style={{ display: "flex", justifyContent: "flex-end" }}>
           <button type="submit" className="btn btn-primary">
